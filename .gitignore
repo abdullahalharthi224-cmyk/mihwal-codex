@@ -1,0 +1,8 @@
+# XcodeGen output and local Xcode build products
+Mihwal.xcodeproj/
+build/
+DerivedData/
+
+# Locally packaged signing artifacts
+Payload/
+*.ipa

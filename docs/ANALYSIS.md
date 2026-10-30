@@ -39,7 +39,7 @@ result).
 
 | Tool | Input | Options and behavior | Output / edge cases | Native implementation | Difficulty |
 | --- | --- | --- | --- | --- | --- |
-| PDF to Word | PDF | Page/range selection | Best-effort `.docx` is not available through a clean Apple API. Initial native scope should export extracted text as `.rtf` or a clearly labelled plain-text document; a real layout-preserving Word file requires a custom OOXML writer and still will not preserve arbitrary PDF layouts. Scanned PDFs need OCR. | PDFKit text extraction; Vision OCR fallback; Foundation/ZIP + custom OOXML only if later approved | **Limited / High** |
+| PDF to Word | PDF | Page/range selection | A real, text-only `.docx` will be produced with a minimal dependency-free OOXML/ZIP writer. Arabic paragraphs will be marked RTL. PDF layout, fonts, images, tables, and links are intentionally not preserved; scanned PDFs need OCR. | PDFKit text extraction; Vision OCR fallback; Foundation + custom ZIP/OOXML writer | High |
 | PDF to text | PDF | Page/range selection; OCR only for pages without a text layer | UTF-8 `.txt`; preserve reading order as available. Complex columns/tables can be imperfect. Detect no text on a page, render it at an appropriate resolution, then OCR Arabic and English. | PDFKit; Vision (`VNRecognizeTextRequest` with `ar-SA`, `en-US`) | Medium |
 | Text to PDF | Plain-text file or entered text | Paper size, margins, font size, alignment, and document title | PDF with correct Arabic shaping, bidi ordering, line wrapping, and pagination. Unsupported fonts fall back to a system font. | Core Text / `NSAttributedString`, Core Graphics PDF context | High |
 | Images to PDF | One or more images: PNG, JPEG, HEIC, WebP where ImageIO decodes it | Drag-reorder, fit/fill, page size, margins, orientation | One PDF. Read EXIF orientation, bound decoded pixel size, and reject unsupported/corrupt images. | PhotosUI/UniformTypeIdentifiers input; ImageIO; Core Graphics | Medium |
@@ -49,7 +49,7 @@ result).
 
 | Tool | Input | Options and behavior | Output / edge cases | Native implementation | Difficulty |
 | --- | --- | --- | --- | --- | --- |
-| Convert formats | PNG, JPEG, HEIC; WebP when platform decoder/encoder support is present | Choose PNG or JPEG; WebP export is capability-gated | Converted image. Preserve orientation; transparency is flattened for JPEG. WebP **input/output cannot be promised by public Apple APIs on every supported OS**, so unavailable support is a clear error rather than a fake conversion. | ImageIO, UniformTypeIdentifiers, Core Graphics | Medium / Limited for WebP |
+| Convert formats | PNG, JPEG, HEIC, and WebP when ImageIO can decode it | Choose PNG or JPEG only | Converted image. Preserve orientation; transparency is flattened for JPEG. WebP is input-only and unavailable decoder support produces a clear error. | ImageIO, UniformTypeIdentifiers, Core Graphics | Medium |
 | Compress | Raster image | Quality preset/slider; optional maximum pixel dimension | JPEG/HEIC output with before/after bytes. PNG is lossless and may not shrink; transparency requires PNG, so lossy conversion needs consent. | ImageIO | Medium |
 | Resize | Raster image | Exact dimensions, aspect-ratio lock, fit/fill | Resized image; prevent upscaling by default and retain orientation. | ImageIO thumbnail/downsampling APIs, Core Graphics | Low |
 | Rotate / flip | Raster image | 90° increments and horizontal/vertical flip | Transformed image. Normalize EXIF orientation into output pixels. | Core Graphics, ImageIO | Low |
@@ -121,3 +121,15 @@ Phase 1 should create only the XcodeGen project, CI workflow, test target, desig
 foundation, localized catalog, and the empty-but-navigable home grid. Engines and import
 logic begin in Phase 2, then tools are delivered in the requested groups. This order keeps
 the first GitHub Actions build small and makes CI failures easy to diagnose.
+
+## Approved product decisions (before Phase 1)
+
+- Bundle identifier: `com.abdullah.mihwal`.
+- WebP is decode-only; the app exports PNG and JPEG, never WebP. No third-party library
+  will be introduced for this.
+- Camera/document scanning is out of scope for this release.
+- PDF-to-Word must produce an actual `.docx`. The implementation will own a minimal ZIP
+  and OOXML writer, output text only, and set Arabic paragraphs RTL; it makes no layout
+  fidelity claim.
+- Page numbers and PDF text watermarking may flatten interactive links and forms. Their
+  confirmation UI must warn users before work starts.

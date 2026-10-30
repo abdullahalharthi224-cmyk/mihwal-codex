@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "category.convert" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "تحويل" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Convert" } } } },
+    "category.images" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "الصور" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Images" } } } },
+    "category.organize" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "تنظيم PDF" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Organize PDF" } } } },
+    "common.done" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "تم" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } } } },
+    "home.favorites" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "المفضلة" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Favorites" } } } },
+    "home.recent" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "الأدوات الأخيرة" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Recent tools" } } } },
+    "home.search" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "ابحث عن أداة" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Search tools" } } } },
+    "home.title" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "مِحوَل" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Mihwal" } } } },
+    "tool.comingSoon" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "ستتوفر هذه الأداة في مرحلة لاحقة." } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "This tool will be available in a later phase." } } } },
+    "tool.favorite" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "إضافة إلى المفضلة" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to favorites" } } } },
+    "tool.merge" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "دمج PDF" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Merge PDF" } } } },
+    "tool.merge.subtitle" : { "localizations" : { "ar" : { "stringUnit" : { "state" : "translated", "value" : "اجمع عدة ملفات" } }, "en" : { "stringUnit" : { "state" : "translated", "value" : "Combine files" } } } }
+  },
+  "version" : "1.0"
+}
