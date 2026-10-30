@@ -14,7 +14,7 @@ xcodegen generate
 
 GitHub Actions generates the project, runs the XCTest target on an iPhone simulator,
 builds an unsigned device Release app, and uploads `Mihwal-unsigned.ipa` as an artifact.
-The configured bundle identifier is `com.abdullah.mihwal`.
+The configured bundle identifier is `com.abdullah.mihwal.codex`.
 
 ## Product decisions
 

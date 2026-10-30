@@ -124,7 +124,7 @@ the first GitHub Actions build small and makes CI failures easy to diagnose.
 
 ## Approved product decisions (before Phase 1)
 
-- Bundle identifier: `com.abdullah.mihwal`.
+- Bundle identifier: `com.abdullah.mihwal.codex`.
 - WebP is decode-only; the app exports PNG and JPEG, never WebP. No third-party library
   will be introduced for this.
 - Camera/document scanning is out of scope for this release.

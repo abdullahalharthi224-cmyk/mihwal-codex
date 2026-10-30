@@ -21,7 +21,7 @@ targets:
       - path: Mihwal
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.abdullah.mihwal
+        PRODUCT_BUNDLE_IDENTIFIER: com.abdullah.mihwal.codex
         PRODUCT_NAME: Mihwal
         INFOPLIST_FILE: Mihwal/Resources/Info.plist
   MihwalTests:
@@ -33,7 +33,7 @@ targets:
       - target: Mihwal
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.abdullah.mihwal.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.abdullah.mihwal.codex.tests
         GENERATE_INFOPLIST_FILE: YES
 schemes:
   Mihwal:
